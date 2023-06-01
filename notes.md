@@ -99,3 +99,11 @@ Los servicios de nube internamente realizan procesos en paralelo.
 - La transferencia de datos entre regiones se cobra.
 
 ![img_data_engineer_gcp/data_flow_gcp.png](img_data_engineer_gcp/data_flow_gcp.png)
+
+
+## Clase 2. Cloud Storage
+
+https://cloud.google.com/storage/docs/buckets?_ga=2.188584296.-1774323373.1685578005&hl=es-419#naming
+
+
+https://www.cloudskillsboost.google/focuses/1760?catalog_rank=%7B%22rank%22%3A3%2C%22num_filters%22%3A1%2C%22has_search%22%3Atrue%7D&parent=catalog&search_id=23942677
