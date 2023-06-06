@@ -107,3 +107,57 @@ https://cloud.google.com/storage/docs/buckets?_ga=2.188584296.-1774323373.168557
 
 
 https://www.cloudskillsboost.google/focuses/1760?catalog_rank=%7B%22rank%22%3A3%2C%22num_filters%22%3A1%2C%22has_search%22%3Atrue%7D&parent=catalog&search_id=23942677
+
+https://www.cloudskillsboost.google/focuses/53925?catalog_rank=%7B%22rank%22%3A2%2C%22num_filters%22%3A0%2C%22has_search%22%3Atrue%7D&parent=catalog&search_id=24002633
+
+
+## Clase 3. Big Query
+
+https://cloud.google.com/bigquery/docs/sandbox?hl=es-419
+
+ROLES: https://cloud.google.com/bigquery/docs/access-control?hl=es-419#bigquery
+
+https://classroom.google.com/c/NjEyMDAxNDI1MjEw/a/NjEyMDAxMzczODI3/details
+
+LABORATORIO: https://classroom.google.com/c/NjEyMDAxNDI1MjEw/a/NjEyMDAxMzczODI3/details
+
+You can do some pretty useful things with arrays like:
+
+finding the number of elements with ARRAY_LENGTH(<array>)
+
+deduplicating elements with ARRAY_AGG(DISTINCT <field>)
+
+ordering elements with ARRAY_AGG(<field> ORDER BY <field>)
+
+limiting ARRAY_AGG(<field> LIMIT 5)
+
+
+You need to UNNEST() arrays to bring the array elements back into rows
+UNNEST() always follows the table name in your FROM clause (think of it conceptually like a pre-joined table)
+
+
+Task 5. Introduction to STRUCTs
+You may have wondered why the field alias hit.page.pageTitle looks like three fields in one separated by periods. Just as ARRAY values give you the flexibility to go deep into the granularity of your fields, another data type allows you to go wide in your schema by grouping related fields together. That SQL data type is the STRUCT data type.
+
+The easiest way to think about a STRUCT is to consider it conceptually like a separate table that is already pre-joined into your main table.
+
+A STRUCT can have:
+
+One or many fields in it
+The same or different data types for each field
+It's own alias
+
+Storing your large reporting tables as STRUCTs (pre-joined "tables") and ARRAYs (deep granularity) allows you to:
+
+Gain significant performance advantages by avoiding 32 table JOINs
+
+Get granular data from ARRAYs when you need it but not be punished if you don't (BigQuery stores each column individually on disk)
+
+Have all the business context in one table as opposed to worrying about JOIN keys and which tables have the data you need.
+
+
+To recap:
+
+Structs are containers that can have multiple field names and data types nested inside.
+
+Arrays can be one of the field types inside of a Struct (as shown above with the splits field).
