@@ -10,9 +10,8 @@ https://www.oreilly.com/member/login/
 
 ## Clase 1- Introducción
 
-### Lab 1 
+### Lab. A Tour of Google Cloud Hands-on Labs
 https://www.cloudskillsboost.google/focuses/2794?parent=catalog
-https://cloud.google.com/docs/overview/#projects
 
 #### Task 1. Accessing the Cloud Console
 
@@ -104,12 +103,12 @@ Los servicios de nube internamente realizan procesos en paralelo.
 ## Clase 2. Cloud Storage
 https://cloud.google.com/storage/docs/buckets?_ga=2.188584296.-1774323373.1685578005&hl=es-419#naming
 
-### Lab 2
+### Lab. Cloud Storage: Qwik Start - Cloud Console
 https://www.cloudskillsboost.google/focuses/1760?catalog_rank=%7B%22rank%22%3A3%2C%22num_filters%22%3A1%2C%22has_search%22%3Atrue%7D&parent=catalog&search_id=23942677
 
 Cloud Storage allows world-wide storage and retrieval of any amount of data at any time. You can use Cloud Storage for a range of scenarios including serving website content, storing data for archival and disaster recovery, or distributing large data objects to users via direct download.
 
-- It's serverless, that means we do not need to focus on hardware, physical resources and management.
+- It's serverless, that means we do not need to worry about the hardware, physical resources and management.
 - **It's not a file system**: It simulates a FS, but everything is at the same level, 'folders' are part of the name of an object.
 - You do not pay when you upload a file, You have to pay for storage, but there are other reading costs and trasfering data from different regions.
 - An object must have 2 things: information and metadata.
@@ -163,6 +162,7 @@ We can change the storage class by setting rules. It is called **"Data Lifecycle
 - In the file dialog, go to the file that you downloaded and select it.
 
 After the upload completes, you should see the file name and information about the file, such as its size and type. **Object names must be unique only within a given bucket.**
+
 <img src="img_data_engineer_gcp/bucket_lab.png" alt="bucket_lab" width="650"/>
 
 
@@ -207,9 +207,41 @@ You should see the folder in the bucket with an image of a folder icon to distin
 
 - Retention policies and retention policy locks: It allows you to configure a data retention policy for a Cloud Storage bucket that governs how long objects in the bucket must be retained. The feature also allows you to lock the data retention policy, permanently preventing the policy from being reduced or removed.
 
+### Lab. Datastream: PostgreSQL Replication to BigQuery
 
 https://www.cloudskillsboost.google/focuses/53925?catalog_rank=%7B%22rank%22%3A2%2C%22num_filters%22%3A0%2C%22has_search%22%3Atrue%7D&parent=catalog&search_id=24002633
 
+
+Datastream is a serverless Change Data Capture (CDC) and replication service that makes it easy to synchronize data across heterogeneous databases and applications reliably and with minimal latency. 
+
+It supports streaming data from Oracle, MySQL and PostgreSQL databases into BigQuery and Cloud Storage. In addition to these destinations, the service offers streamlined integration by using Dataflow templates to build custom workflows for loading data into BigQuery for analytics. You can also use Datastream to replicate your databases into Cloud SQL or Cloud Spanner for database synchronization, or leverage the event stream directly from Cloud Storage to realize event-driven architectures.
+
+It allows a wide range of use cases:
+- Analytics
+- DBs migrations
+- Event-driven Architectures.
+- AI and ML.
+- Data lakes and more.
+
+#### Experience elements
+There are three main elements that comprise Datastream:
+
+- **Private connectivity** configurations enable Datastream to communicate with a data source over a private network (internally within Google Cloud, or with external sources connected over VPN or Interconnect). This communication happens through a Virtual Private Cloud (VPC) peering connection.
+
+- **Connection profiles** represent connectivity information to both a source and a destination. This information will be used by a stream.
+
+- **Streams** use the information in the connection profiles to transfer CDC and backfill data from the source to the destination.
+
+<img src="img_data_engineer_gcp/datastream_flow.png" alt="datastream_flow" width="500"/>
+
+More Info:
+-  In this video, we’ll show you how you can set up a data stream from Oracle to Cloud Storage. Watch to learn how Datastream can deliver change data streams in real time from your database to Google Cloud to support analytics, database replication, and event-driven architectures!
+https://www.youtube.com/watch?v=FZG4w4Vbj38&t=38s
+
+- In this video, Gabe Weiss, Developer Advocate at Google, discusses setting up real-time replication from Cloud SQL to BigQuery. Watch along and learn how to get started with Datastream for BigQuery!
+https://www.youtube.com/watch?v=vMo6Zgkvt40 : 
+
+- Documentataion: https://cloud.google.com/datastream/docs/overview
 
 ## Clase 3. Big Query
 
