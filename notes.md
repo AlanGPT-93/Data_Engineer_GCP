@@ -52,53 +52,52 @@ Google Cloud consists of a set of physical assets, such as computers and hard di
 
 This distribution of resources provides several benefits, including redundancy in case of failure and reduced latency by locating resources closer to clients. This distribution also introduces some rules about how resources can be used together.
 
-### Inicio
+### Introduction
 https://gcping.com/
 
-Hay 3 nubes: AWS, Azure, GPC.
-Google tiene el mayor número de servicios para analítica.
-En AWS se tienen que realizar las configuraciones de disco, ram, infraestructura y en GCP no, esto se le llama *tecnología serverless de GCP*.
+There are 3 clouds: AWS, Azure, GCP.
+Google has the largest number of services for analytics.
+In AWS, disk, RAM, and infrastructure configurations need to be done, while in GCP, this is called GCP's serverless technology.
 
-El Data Engineer se encarga de ETL.
-Datawarehouse es BQ.
-Datalake es Cloud Storage.
+The Data Engineer is responsible for ETL.
+Data warehouse is BigQuery (BQ).
+Data lake is Cloud Storage.
 
-### Las nubes Aprovechan Open Source
-Ejemplo de GCP:
-- Beam(Dataflow)
-- Spark(Dataproc)
-- Airflow(Compouser)
+### Clouds Utilize Open Source
+Example in GCP:
 
-Las nubes tienen auditoría, se sabe quién, cuándo y dónde se hizo algún cambio.
-Los servicios de nube internamente realizan procesos en paralelo.
+- Beam (Dataflow)
+- Spark (Dataproc)
+- Airflow (Composer)
 
-### Intro a Servicios
+Clouds have auditing, so you know who, when, and where a change was made.
+Cloud services internally perform processes in parallel.
 
-*Big Query*: Te cobra por escanéo de data antes de realizar consulta. Por ello se debe:
-- Diseñar tabla de partición.
-- Clusterizar(Indice).
-- Seleccionar solo datos que se necesitan.
-- En caso muy extremo, llamar a GCP para limitar cuotas.
-- El preview no te cobra
+### Introduction to Services
+**BigQuery**: You are charged for data scanning before executing queries. To optimize costs:
+- Design partitioned tables.
+- Clustering (Index).
+- Select only the necessary data.
+- In extreme cases, contact GCP to limit quotas.
+- Preview does not incur charges.
 
-*Cloud Storage*: Es el corazón de un servicio de Big Data.
-*Data fusion and Dataprep*: Usados para limpieza de datos.
-*Dataflow and Dataproc*: Procesamiento de datos.
+**Cloud Storage**: It is the heart of a Big Data service.
+**Data Fusion and Dataprep**: Used for data cleansing.
+**Dataflow and Dataproc**: Data processing.
 
-*Comandos*: Hay 3 comandos para usar la cloud shell:
-- bq: maneja lo relacionado a Big Query.
-- gsutil: controla lo de cloud storage.
-- gcloud: comando para resto de servicios.
+**Commands**: There are 3 commands to use in the Cloud Shell:
+- bq: handles BigQuery-related tasks.
+- gsutil: controls Cloud Storage.
+- gcloud: command for other services.
 
-### Uso básico de GCP
-- Las regiones son un conjunto de servidores que están al rededor del mundo.
-- Hay que elegir región primaria y secundaria.
-- Hay 4 roles básicos: Owner, Viewer, Editor, Browser.
-- Los reloes se basan en el principio de mínimo privilegio.
-- La transferencia de datos entre regiones se cobra.
+### Basic Usage of GCP
+- Regions are sets of servers located around the world.
+- Choose a primary and secondary region.
+- There are 4 basic roles: Owner, Viewer, Editor, Browser.
+- Roles are based on the principle of least privilege.
+- Data transfer between regions incurs charges.
 
-![img_data_engineer_gcp/data_flow_gcp.png](img_data_engineer_gcp/data_flow_gcp.png)
-
+<img src="img_data_engineer_gcp/data_flow_gcp.png" alt="data_flow_gcp" width="550"/>
 
 ## Clase 2. Cloud Storage
 https://cloud.google.com/storage/docs/buckets?_ga=2.188584296.-1774323373.1685578005&hl=es-419#naming
@@ -202,7 +201,6 @@ You should see the folder in the bucket with an image of a folder icon to distin
 
 <img src="img_data_engineer_gcp/deleting_bucket.png" alt="deleting_bucket" width="500"/>
 
-
 - Object Versioning: It's only on if set it on the bucket. Every action on an object save a copy, the current object is called "Current object" and the previous ones are called "Noncurrent object". Object Versioning cannot be enabled on a bucket that currently has a retention policy.
 
 - Retention policies and retention policy locks: It allows you to configure a data retention policy for a Cloud Storage bucket that governs how long objects in the bucket must be retained. The feature also allows you to lock the data retention policy, permanently preventing the policy from being reduced or removed.
@@ -241,17 +239,165 @@ https://www.youtube.com/watch?v=FZG4w4Vbj38&t=38s
 - In this video, Gabe Weiss, Developer Advocate at Google, discusses setting up real-time replication from Cloud SQL to BigQuery. Watch along and learn how to get started with Datastream for BigQuery!
 https://www.youtube.com/watch?v=vMo6Zgkvt40 : 
 
-- Documentataion: https://cloud.google.com/datastream/docs/overview
+- Documentation: https://cloud.google.com/datastream/docs/overview
 
 ## Clase 3. Big Query
 
+BigQuery is a fully managed enterprise data warehouse that helps you manage and analyze your data with built-in features like machine learning, geospatial analysis, and business intelligence. BigQuery's serverless architecture lets you use SQL queries to answer your organization's biggest questions with zero infrastructure management. BigQuery's scalable, distributed analysis engine lets you query terabytes in seconds and petabytes in minutes.
+
+BigQuery maximizes flexibility by separating the compute engine that analyzes your data from your storage choices. 
+
 https://cloud.google.com/bigquery/docs/sandbox?hl=es-419
 
-ROLES: https://cloud.google.com/bigquery/docs/access-control?hl=es-419#bigquery
+### BigQuery predefined IAM roles
+The following table lists the predefined BigQuery IAM roles with a corresponding list of all the permissions each role includes. Note that every permission is applicable to a particular resource type.
+https://cloud.google.com/bigquery/docs/access-control?hl=es-419#bigquery
 
-https://classroom.google.com/c/NjEyMDAxNDI1MjEw/a/NjEyMDAxMzczODI3/details
+### GoogleSQL data types
+GoogleSQL lets you specify the following data types in your schema. Data type is required. https://cloud.google.com/bigquery/docs/schemas#standard_sql_data_types
 
-LABORATORIO: https://classroom.google.com/c/NjEyMDAxNDI1MjEw/a/NjEyMDAxMzczODI3/details
+### Lab. Using BigQuery in the Google Cloud Console
+
+https://www.cloudskillsboost.google/focuses/3616?catalog_rank=%7B%22rank%22%3A9%2C%22num_filters%22%3A1%2C%22has_search%22%3Atrue%7D&parent=catalog&search_id=23942610
+
+Using BigQuery in the Cloud Console will give you a visual interface to complete tasks like running queries, loading data, and exporting data. This hands-on lab shows you how to query tables in a public dataset and how to load sample data into BigQuery through the Cloud Console.
+
+#### Task 1. Open BigQuery
+The BigQuery console provides an interface to query tables, including public datasets offered by BigQuery.
+
+1. Open the BigQuery console
+In the Google Cloud Console, select Navigation menu > BigQuery.
+The Welcome to BigQuery in the Cloud Console message box opens. This message box provides a link to the quickstart guide and the release notes.
+
+2. Click Done.
+The BigQuery console opens.
+
+<img src="img_data_engineer_gcp/bigquery_gcp.png" alt="bigquery_gcp" width="500"/>
+
+#### Task 2. Query a public dataset
+In this section, you load a public dataset, USA Names, into BigQuery, then query the dataset to determine the most common names in the US between 1910 and 2013.
+
+1. Load USA Name dataset
+In the left pane, click + ADD DATA.
+
+2. In ADD Data window, select Star a project by name.
+
+<img src="img_data_engineer_gcp/public_ds.png" alt="public_ds" width="500"/>
+
+3. Enter project name as bigquery-public-data and click STAR.
+
+The project bigquery-public-data is added to your resources and you see the dataset usa_names listed in the left pane in your Explorer section under bigquery-public-data.
+
+4. Click usa_names to expand the dataset.
+
+5. Click usa_1910_2013 to open that table.
+
+<img src="img_data_engineer_gcp/usa_ds.png" alt="usa_ds" width="500"/>
+
+6. Query the USA Names dataset
+
+Query bigquery-public-data.usa_names.usa_1910_2013 for the name and gender of the babies in this dataset, and then list the top 10 names in descending order.
+
+<img src="img_data_engineer_gcp/querying_usa.png" alt="querying_usa" width="500"/>
+
+BigQuery displays a green check mark icon if the query is valid. If the query is invalid, a red exclamation point icon is displayed. When the query is valid, the validator also shows the amount of data the query processes when you run it. This helps to determine the cost of running the query.
+
+The query results opens below the Query editor. At the top of the Query results section, BigQuery displays the time elapsed and the data processed by the query. Below the time is the table that displays the query results. The header row contains the name of the column as specified in GROUP BY in the query.
+
+<img src="img_data_engineer_gcp/results_usa.png" alt="results_usa" width="600"/>
+
+#### Task 4. Create a dataset
+In this section, you create a dataset to hold your table, add data to your project, then make the data table you'll query against.
+
+Datasets help you control access to tables and views in a project. This lab uses only one table, but you still need a dataset to hold the table.
+
+1. Back in the console, in the Explorer section, click on the View actions icon next to your project ID and select Create dataset.
+
+<img src="img_data_engineer_gcp/create_ds.png" alt="create_ds" width="500"/>
+
+
+2. On the Create dataset page:
+   - For Dataset ID, enter babynames.
+   - For Data location, choose us (multiple regions in United States).
+   - For Default table expiration, leave the default value.
+
+Currently, the public datasets are stored in the US multi-region location. For simplicity, place your dataset in the same location.
+
+<img src="img_data_engineer_gcp/ds_config.png" alt="ds_config" width="500"/>
+
+
+#### Task 5. Load the data into a new table
+In this section, you load data into the table you made.
+
+1. Create a table by clicking on the View actions icon next to your babynames dataset in the Explorer section. Select Open, then click Create table.
+Use the default values for all settings unless otherwise indicated.
+
+2. On the Create table page:
+
+   - For Create table from, choose Upload from the dropdown menu.
+   - For Select file, click Browse, navigate to the yob2014.txt file and click Open.
+   - For File format, choose CSV from the dropdown menu.
+   - For Table name, enter names_2014.
+   - In the Schema section, click the Edit as text toggle and paste the following schema definition in the text box.
+
+<img src="img_data_engineer_gcp/create_table.png" alt="create_table" width="600"/>
+
+#### Task 6. Query the table
+
+Now that you've loaded data into your table, you can run queries against it. The process is identical to the previous example, except that this time, you're querying your table instead of a public table.
+
+In the Query editor, click Compose new query.
+
+Copy and paste the following query into the query EDITOR. This query retrieves the top 5 baby names for US males in 2014.
+
+<img src="img_data_engineer_gcp/names_table.png" alt="names_table" width="500"/>
+
+### Lab.  Working with JSON, Arrays, and Structs in BigQuery
+https://www.cloudskillsboost.google/focuses/3696?parent=catalog
+
+In this lab you will work in-depth with semi-structured data (ingesting JSON, Array data types) inside of BigQuery. Denormalizing your schema into a single table with nested and repeated fields can yield performance improvements, but the SQL syntax for working with array data can be tricky. You will practice loading, querying, troubleshooting, and unnesting various semi-structured datasets.
+
+
+#### Task 2. Practice working with arrays in SQL
+
+<img src="img_data_engineer_gcp/normal_sql.png" alt="normal_sql" width="500"/>
+
+In traditional relational database SQL, you would look at the repetition of names and immediately think of splitting the above table into two separate tables: Fruit Items and People. That process is called normalization (going from one table to many). This is a common approach for transactional databases like mySQL.
+
+For data warehousing, data analysts often go the reverse direction (denormalization) and bring many separate tables into one large reporting table.
+
+
+Now, you're going to learn a different approach that stores data at different levels of granularity all in one table using repeated fields:
+
+<img src="img_data_engineer_gcp/repeated_fields.png" alt="repeated_fields" width="500"/>
+
+What looks strange about the previous table?
+
+It's only two rows.
+There are multiple field values for Fruit in a single row.
+The people are associated with all of the field values.
+What the key insight? The array data type!
+
+An easier way to interpret the Fruit array:
+
+<img src="img_data_engineer_gcp/fruit_array.png" alt="fruit_array" width="500"/>
+
+Both of these tables are exactly the same. There are two key learnings here:
+
+An array is simply a list of items in brackets [ ]
+BigQuery visually displays arrays as flattened. It simply lists the value in the array vertically (note that all of those values still belong to a single row)
+
+**Data in an array [ ] must all be the same type**: Arrays can only share one data type (all strings, all numbers).
+
+
+**Recap**
+
+- BigQuery natively supports arrays
+- Array values must share a data type
+- Arrays are called REPEATED fields in BigQuery
+
+
+
 
 You can do some pretty useful things with arrays like:
 
@@ -293,3 +439,14 @@ To recap:
 Structs are containers that can have multiple field names and data types nested inside.
 
 Arrays can be one of the field types inside of a Struct (as shown above with the splits field).
+
+
+More Info:
+
+- Welcome to BigQuery Spotlight, where we’ll be showing you all the ins and outs of BigQuery, Google’s fully-managed data warehouse. In this episode, we’ll start with an overview of BigQuery. More importantly, we’ll go over how BigQuery is designed to ingest and store large amounts of data, and make that data accessible for fast, large-scale analytics - to help analysts and developers alike. https://www.youtube.com/watch?v=d3MDxC_iuaw&list=PLIivdWyY5sqLAbIdmcMwsxWg-w8Px34MS
+
+- Build Series - Episode 4: How to get started with BigQuery. https://www.youtube.com/watch?v=BH_7_zVk5oM
+
+- How does BigQuery store data?. https://www.youtube.com/watch?v=0Hd23GnZ1bE
+
+- Documentation: https://cloud.google.com/bigquery/docs/introduction
